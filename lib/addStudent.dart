@@ -21,7 +21,7 @@ class _AddstudentState extends State<Addstudent> {
   final _department=TextEditingController();
   final _phoneno=TextEditingController();
   String? _selectedImage;
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+ final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
  
   @override
   Widget build(BuildContext context) {
@@ -161,7 +161,21 @@ class _AddstudentState extends State<Addstudent> {
 
 
             ElevatedButton.icon(
-              onPressed: ()async {
+              onPressed: (){
+                 studentAdding();
+              } ,
+              icon: const Icon(Icons.save),
+              label: const Text('SAVE'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  
+  studentAdding()async{
+    {
                
                 if (_formKey.currentState!.validate()) {
                   
@@ -210,17 +224,8 @@ class _AddstudentState extends State<Addstudent> {
                         Navigator.pop(context);
                 }        
                }  
-              },
-              icon: const Icon(Icons.save),
-              label: const Text('SAVE'),
-            ),
-          ],
-        ),
-      ),
-    );
+              }
   }
-
-   // immage uploading funtion//
  
 }
    Future<String?> _pickImageFromCamera() async {
@@ -230,3 +235,4 @@ class _AddstudentState extends State<Addstudent> {
     }
     return null;
   }
+  
